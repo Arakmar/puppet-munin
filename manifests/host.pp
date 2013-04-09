@@ -42,8 +42,9 @@ class munin::host(
 	
 	file { 'munin_htpasswd':
 		path => "/etc/munin/munin-htpasswd",
-		source => [ "puppet:///modules/site-munin/config/host/munin-htpasswd",
-			"puppet:///modules/munin/config/host/munin-htpasswd" ],
+                source => [ "puppet:///modules/site-munin/config/host/${::fqdn}/munin-htpasswd",
+                        "puppet:///modules/site-munin/config/host/munin-htpasswd",
+                        "puppet:///modules/munin/config/host/munin-htpasswd" ],
 		mode => 0640, owner => root, group => www-data;
 	}
 
