@@ -9,3 +9,4 @@ class munin::client::package inherits munin::client::base {
     before => Package['munin-node'],
   }
 }
+

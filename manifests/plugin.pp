@@ -54,3 +54,4 @@ define munin::plugin (
     }
   }
 }
+

@@ -1,5 +1,6 @@
 # currently we install munin on openbsd by targz
 # :(
+
 class munin::client::openbsd inherits munin::client::base {
   if $::operatingsystemrelease == '4.3' {
     file{'/usr/src/munin_openbsd.tar.gz':
