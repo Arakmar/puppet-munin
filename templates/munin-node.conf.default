@@ -15,6 +15,16 @@ setsid 1
 user root
 group 0
 
+# This is the timeout for the whole transaction.
+# Units are in sec. Default is 15 min
+#
+# global_timeout 900
+
+# This is the timeout for each plugin.
+# Units are in sec. Default is 1 min
+#
+# timeout 60
+
 # Regexps for files to ignore
 ignore_file [\#~]$
 ignore_file DEADJOE$
@@ -28,7 +38,7 @@ ignore_file \.pod$
 # telnetting to localhost, port 4949
 #
 #host_name localhost.localdomain
-host_name <%= fqdn %>
+host_name <%= @fqdn %>
 
 # A list of addresses that are allowed to connect.  This must be a
 # regular expression, since Net::Server does not understand CIDR-style
