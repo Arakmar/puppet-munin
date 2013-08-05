@@ -4,7 +4,7 @@ define munin::register (
   $use_ssh = false,
   $description = 'absent',
   $config = [],
-  $export_tag = 'munin'
+  $export_tag = ['default']
 )
 {
   $fhost = $name
