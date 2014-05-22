@@ -1,11 +1,12 @@
 # Register a munin client
 define munin::register (
-  $host = $::fqdn,
-  $port = '4949',
-  $use_ssh = false,
-  $description = 'absent',
-  $config = [],
-  $export_tag = ['default']
+  $host         = $::fqdn,
+  $port         = '4949',
+  $use_ssh      = false,
+  $description  = 'absent',
+  $config       = [],
+  $export_tag   = ['default'],
+  $group        = 'absent',
 )
 {
   $fhost = $name
