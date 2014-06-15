@@ -29,27 +29,6 @@ class munin::host(
     mode  => '0644',
   }
 
-  file { 'apache.conf':
-		path => "/etc/munin/apache.conf",
-		source => [ "puppet:///modules/site-munin/config/host/${::fqdn}/apache.conf",
-			"puppet:///modules/site-munin/config/host/apache.conf.${::operatingsystem}.${::lsbdistcodename}",
-			"puppet:///modules/site-munin/config/host/apache.conf.${::operatingsystem}",
-			"puppet:///modules/site-munin/config/host/apache.conf",
-			"puppet:///modules/munin/config/host/apache.conf.${::operatingsystem}.${::lsbdistcodename}",
-			"puppet:///modules/munin/config/host/apache.conf.${::operatingsystem}",
-			"puppet:///modules/munin/config/host/apache.conf" ],
-		mode => '0644', owner => 'root', group => 0,
-		notify => Service['apache'],
-	}
-	
-	file { 'munin_htpasswd':
-		path => "/etc/munin/munin-htpasswd",
-                source => [ "puppet:///modules/site-munin/config/host/${::fqdn}/munin-htpasswd",
-                        "puppet:///modules/site-munin/config/host/munin-htpasswd",
-                        "puppet:///modules/munin/config/host/munin-htpasswd" ],
-		mode => 0640, owner => root, group => www-data;
-	}
-
   include munin::plugins::muninhost
 
   if $munin::host::cgi_graphing {
