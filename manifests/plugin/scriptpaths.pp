@@ -5,6 +5,7 @@ class munin::plugin::scriptpaths {
     debian: { $script_path =  '/usr/share/munin/plugins' }
     centos: { $script_path =  '/usr/share/munin/plugins' }
     openbsd: { $script_path = '/usr/local/libexec/munin/plugins/' }
+    archlinux: { $script_path = '/usr/lib/munin/plugins' }
     default: { $script_path =  '/usr/share/munin/plugins' }
   }
 }
