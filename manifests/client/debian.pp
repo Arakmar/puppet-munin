@@ -12,7 +12,6 @@ class munin::client::debian inherits munin::client::base {
     # sarge's munin-node init script has no status
     hasstatus => $hasstatus
   }
-  # workaround bug in munin_node_configure
-  plugin { 'postfix_mailvolume': ensure => absent }
+
   include munin::plugins::debian
 }
