@@ -3,7 +3,7 @@ define munin::plugin::deploy(
   $ensure   = 'present',
   $source   = '',
   $config   = '',
-  $seltype  = 'munin_unconfined_plugin_exec_t',
+  $seltype  = 'unconfined_munin_plugin_exec_t',
   $register = true,
 ) {
   $plugin_src = $ensure ? {
