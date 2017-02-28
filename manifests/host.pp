@@ -3,8 +3,6 @@
 # See LICENSE for the full license granted to you.
 
 class munin::host(
-  $cgi_graphing = false,
-  $cgi_owner = 'os_default',
   $export_tag = undef
 ) {
   package {'munin': ensure => installed, }
@@ -30,12 +28,6 @@ class munin::host(
   }
 
   include munin::plugins::muninhost
-
-  if $munin::host::cgi_graphing {
-    class {'munin::host::cgi':
-      owner => $cgi_owner,
-    }
-  }
 
   # from time to time we cleanup hanging munin-runs
   file{'/etc/cron.d/munin_kill':
