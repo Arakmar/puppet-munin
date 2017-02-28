@@ -12,14 +12,14 @@ define munin::register (
   validate_array($export_tags)
 
   if (empty($export_tags)) {
-    $tagArray = ['munin_client']
+    $tag_array = ['munin_client']
   } else {
-    $tagArray = prefix($export_tags, "munin_client_")
+    $tag_array = prefix($export_tags, "munin_client_")
   }
 
   @@concat::fragment{ "munin_client_${::fqdn}":
     target  => '/etc/munin/munin.conf',
     content => template('munin/client.erb'),
-    tag     => $export_tags,
+    tag     => $tag_array,
   }
 }
