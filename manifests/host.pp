@@ -44,7 +44,4 @@ class munin::host(
     group   => 0,
     mode    => '0644',
   }
-  if $munin::host::manage_shorewall {
-    include shorewall::rules::out::munin
-  }
 }

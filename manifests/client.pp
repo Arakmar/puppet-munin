@@ -9,8 +9,6 @@ class munin::client(
   $host_name                  = $::fqdn,
   $port                       = '4949',
   $use_ssh                    = false,
-  $manage_shorewall           = false,
-  $shorewall_collector_source = 'net',
   $export_tag                 = ['default'],
   $description                = 'absent',
   $munin_group                = 'absent',
@@ -23,12 +21,5 @@ class munin::client(
     gentoo: { include munin::client::gentoo }
     centos: { include munin::client::base }
     default: { include munin::client::base }
-  }
-  if $munin::client::manage_shorewall {
-    class{'shorewall::rules::munin':
-      munin_port       => $port,
-      munin_collector  => delete($allow,'127.0.0.1'),
-      collector_source => $shorewall_collector_source,
-    }
   }
 }
