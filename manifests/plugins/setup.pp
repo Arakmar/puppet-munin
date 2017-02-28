@@ -5,7 +5,6 @@ class munin::plugins::setup {
     [ '/etc/munin/plugins', '/etc/munin/plugin-conf.d' ]:
       ensure    => directory,
       require   => Package['munin-node'],
-      ignore    => 'snmp_*',
       checksum  => mtime,
       recurse   => true,
       purge     => true,
