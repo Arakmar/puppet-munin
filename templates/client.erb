@@ -7,11 +7,10 @@
 ### Munin client from Puppet template
 # Domain: <%= dom %>
 # Registered on: <%= h %>
-# Type: <%= @client_type %>
 <% if @description != 'absent' -%>
 # Description: <%= @description.gsub(/\n/, ' ') %>
 <% end -%>
-[<% if @group != 'absent' -%><%= @group %>;<% end -%><%= @fhost.downcase %>]
+[<% if @group != 'absent' -%><%= @group %>;<% end -%><%= @fqdn %>]
 <% if @use_ssh -%>
     address ssh://<%= @host %>/bin/nc localhost <%= @port %>
 <% else -%>

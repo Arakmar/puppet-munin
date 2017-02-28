@@ -5,11 +5,15 @@
 class munin::host(
   $cgi_graphing = false,
   $cgi_owner = 'os_default',
-  $export_tag = 'munin'
+  $export_tag = undef
 ) {
   package {'munin': ensure => installed, }
 
-  Concat::Fragment <<| tag == $export_tag |>>
+  $real_export_tag = $export_tag ? {
+    undef => 'munin_client',
+    default => "munin_client_${export_tag}"
+  }
+  Concat::Fragment <<| tag == $real_export_tag |>>
 
   concat::fragment{'munin.conf.header':
     target => '/etc/munin/munin.conf',

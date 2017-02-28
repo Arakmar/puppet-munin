@@ -37,7 +37,7 @@ class munin::client::base inherits munin::client::params {
     description => $munin::client::description,
     group       => $munin::client::munin_group,
     config      => [ 'use_node_name yes', 'load.load.warning 5', 'load.load.critical 10'],
-    export_tag  => $munin::client::export_tag,
+    export_tags => $munin::client::export_tags,
   }
   include munin::plugins::base
 }

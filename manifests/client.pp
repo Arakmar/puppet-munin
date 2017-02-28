@@ -9,7 +9,7 @@ class munin::client(
   $host_name                  = $::fqdn,
   $port                       = '4949',
   $use_ssh                    = false,
-  $export_tag                 = ['default'],
+  $export_tags                 = [],
   $description                = 'absent',
   $munin_group                = 'absent',
 ) {

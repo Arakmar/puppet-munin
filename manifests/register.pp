@@ -5,16 +5,21 @@ define munin::register (
   $use_ssh      = false,
   $description  = 'absent',
   $config       = [],
-  $export_tag   = ['default'],
+  $export_tags   = [],
   $group        = 'absent',
 )
 {
-  $fhost = $name
-  $client_type = 'client'
+  validate_array($export_tags)
 
-  @@concat::fragment{ "munin_client_${fhost}_${port}":
+  if (empty($export_tags)) {
+    $tagArray = ['munin_client']
+  } else {
+    $tagArray = prefix($export_tags, "munin_client_")
+  }
+
+  @@concat::fragment{ "munin_client_${::fqdn}":
     target  => '/etc/munin/munin.conf',
     content => template('munin/client.erb'),
-    tag     => $export_tag,
+    tag     => $export_tags,
   }
 }
